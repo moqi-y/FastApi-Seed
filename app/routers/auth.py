@@ -4,7 +4,7 @@ from app.core.security import hash_password
 from app.crud.user import authenticate_user, get_user_by_username, create_user
 from app.dependencies import create_token_response, get_current_user
 from app.schemas.response import SuccessResponse
-from app.schemas.user import UserOut, UserCreate
+from app.schemas.user import UserOut, UserCreate, Token
 
 router = APIRouter()
 
@@ -38,7 +38,8 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     return SuccessResponse(data=create_token_response(user.username))
 
 
-@router.post("/login/swagger", summary="用户登录（仅Swagger使用）", include_in_schema=False)  # 不出现在Swagger文档中
+@router.post("/login/swagger", summary="用户登录（仅Swagger使用）", include_in_schema=False,
+             response_model=Token)  # 不出现在Swagger文档中
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user = authenticate_user(form_data.username, form_data.password)
     if not user:
