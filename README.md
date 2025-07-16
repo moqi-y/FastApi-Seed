@@ -181,6 +181,8 @@ python-dotenv~=1.1.1
 python-jose[cryptography]~=3.5.0
 python-jose~=3.5.0
 captcha~=0.7.1
+httpx~=0.28.1
+pymysql~=1.1.1
 ```
 
 > #### `requirements.txt`文件中，`fastapi`和`uvicorn`是必须的，其他依赖根据项目需求添加。              
@@ -192,8 +194,10 @@ captcha~=0.7.1
 > `python-multipart`是用于处理multipart/form-data的库。     
 > `python-dotenv`是用于加载环境变量的库。           
 > `python-jose[cryptography]`是用于处理JWT的库。            
-> `python-jose`是用于处理JWT的库。      
-> `captcha` 是用于生成验证码的库。
+> `python-jose`是用于处理JWT的库。           
+> `captcha` 是用于生成验证码的库。         
+> `httpx` 是用于发送HTTP请求的库。        
+> `pymysql` 是用于连接MySQL数据库的库。            
 
 ### 参考文档
 - [FastAPI 官方文档](https://fastapi.tiangolo.com/zh/)
