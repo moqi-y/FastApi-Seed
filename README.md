@@ -2,7 +2,7 @@
 
 > 基于FastApi的后端项目快速开发模板,包含基础的CRUD操作和中间件,以及数据库模型和配置。
 
-## FastApi-Seed 项目目录结构说明
+## FastApi-Seed 项目目录说明
 > - **app** - 应用的主目录，包含应用的核心代码和逻辑。
 >  - **main.py** - 应用的入口文件（主程序），包含应用的初始化和启动逻辑。
 >  - **dependencies.py** - 应用的依赖管理文件，包含应用的依赖项和配置。
@@ -34,7 +34,7 @@ git clone git@github.com:moqi-y/FastApi-Seed.git
 
 ## 安装依赖
 
-**python版本：** 3.10.11
+**Python版本：** `3.10.11`
 
 ```bash
 pip install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com -r requirements.txt
