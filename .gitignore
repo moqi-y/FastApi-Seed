@@ -1,0 +1,21 @@
+# 默认忽略的文件
+/shelf/
+/workspace.xml
+# 基于编辑器的 HTTP 客户端请求
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+# Editor-specific files
+/dataSources.local.xml
+dataSources.local.xml
+FastApi-Seed.iml
+misc.xml
+modules.xml
+.idea/*
+.idea/*\*
+out/
+# Gradle
+.gradle/
+vcs.xml
+workspace.xml
+/logs/*

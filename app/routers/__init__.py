@@ -1,4 +1,4 @@
-from app.routers import auth
+from app.routers import auth, user
 
 
 def router_config(app):
@@ -7,5 +7,13 @@ def router_config(app):
         auth.router,
         prefix="/api/v1/auth",  # 路径名
         tags=["auth"]  # 文档标签名
+        # dependencies=[Depends(get_current_user)] #依赖
+    )
+
+    app.include_router(
+        user.router,
+        deprecated=False,  # 是否弃用
+        prefix="/api/v1/user",  # 路径名
+        tags=["user"]  # 文档标签名
         # dependencies=[Depends(get_current_user)] #依赖
     )

@@ -37,6 +37,21 @@ def get_user_by_username(username: str):
         session.close()
 
 
+# 根据用户ID查询用户
+def get_user_by_id(user_id: int):
+    try:
+        # 查询用户，如果不存在则返回 None
+        user = session.exec(
+            select(User).where(User.id == user_id)
+        ).first()
+        return user
+    except Exception as e:
+        print(f"SQL_Error: {e}")
+        return None
+    finally:
+        session.close()
+
+
 # 根据用户名和密码查询用户
 def authenticate_user(username: str, password: str):
     try:
@@ -50,3 +65,22 @@ def authenticate_user(username: str, password: str):
     except Exception as e:
         print(f"SQL_Error: {e}")
         return None
+
+
+# 更新用户信息
+def update_user_info(user_id: int, username: str, password: str, email: str):
+    try:
+        # 更新用户信息
+        result = session.exec(select(User).where(User.id == user_id)).one()
+        result.username = username
+        result.password = password
+        result.email = email
+        session.add(result)
+        session.commit()
+        session.refresh(result)
+        return True
+    except Exception as e:
+        print(f"SQL_Error: {e}")
+        return False
+    finally:
+        session.close()

@@ -23,3 +23,10 @@ class UserOut(BaseModel):
     class Config:
         # 是否从属性中获取配置
         from_attributes = True
+
+
+class UserIn(BaseModel):
+    user_id: int | None
+    username: str
+    password: str
+    email: str | None
