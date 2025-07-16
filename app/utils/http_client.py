@@ -20,6 +20,7 @@ class Result:
 
 
 class HttpClient:
+    """ httpx 客户端 """
     _client: Optional[httpx.AsyncClient] = None
 
     # ---------- 内部工具 ----------
@@ -79,6 +80,14 @@ class HttpClient:
             headers: Dict[str, str] = None,
             auto_raise: bool = True,
     ):
+        """
+        GET 请求
+        :param url: 请求地址
+        :param params: 请求参数
+        :param headers: 请求头
+        :param auto_raise: 是否自动抛出异常
+        :return: Result
+        """
         return await cls._safe_request(
             "GET", url, params=params, headers=headers, auto_raise=auto_raise
         )
@@ -93,6 +102,15 @@ class HttpClient:
             headers: Dict[str, str] = None,
             auto_raise: bool = True,
     ):
+        """
+        发送POST请求
+        :param url: 请求的URL
+        :param json: 请求的JSON数据
+        :param data: 请求的表单数据
+        :param headers: 请求的头部信息
+        :param auto_raise: 是否自动抛出异常
+        :return: 返回结果
+        """
         return await cls._safe_request(
             "POST", url, json=json, data=data, headers=headers, auto_raise=auto_raise
         )
