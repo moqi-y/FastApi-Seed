@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 from app.crud.database import create_db_and_tables
 from app.middleware import cors
+from app.middleware.logger_config import make_logging_middleware
 from app.routers import router_config
 
 # 加载 .env 文件
@@ -40,6 +41,9 @@ cors.cors_config(app)
 
 # 路由配置
 router_config(app)
+
+# 注册日志中间件
+app.middleware("http")(make_logging_middleware())
 
 #  静态文件配置
 app.mount("/static", StaticFiles(directory="static"), name="static")
