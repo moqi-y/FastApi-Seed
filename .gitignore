@@ -20,3 +20,4 @@ vcs.xml
 workspace.xml
 /logs/*
 profiles_settings.xml
+*.db
