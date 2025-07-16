@@ -6,7 +6,7 @@ from app.core.security import SECRET_KEY, ALGORITHM, create_access_token
 from app.crud.user import get_user_by_username
 
 # 定义一个OAuth2PasswordBearer对象，用于处理OAuth2.0密码模式的认证,用于在线文档的认证
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login/swagger")
 
 
 # 定义一个异步函数get_current_user，用于获取当前用户
