@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI, applications
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.staticfiles import StaticFiles
@@ -21,12 +23,13 @@ def swagger_monkey_patch(*args, **kwargs):
 
 
 applications.get_swagger_ui_html = swagger_monkey_patch
-
+debug = os.getenv("APP_DEBUG", "").lower() in ("1", "true")
 app = FastAPI(
-    title="FastApi-Seed",
-    description="FastApi-Seed 接口文档",
-    version="1.0.0",
-    docs_url="/docs",  # docs_url=None, redoc_url=None
+    title=os.getenv("APP_NAME"),
+    description=os.getenv("APP_NAME") + " swagger接口文档",
+    version=os.getenv("APP_VERSION"),
+    docs_url="/docs" if debug else None,  # docs_url=None, redoc_url=None
+    redoc_url="/redoc" if debug else None,
 )
 
 
