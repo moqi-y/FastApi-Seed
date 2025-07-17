@@ -24,7 +24,7 @@
 >- **requirements.txt** - 依赖文件，列出项目依赖的 Python 包及其版本。
 >- **test_main.http** - HTTP 请求测试文件，包含用于测试 API 的 HTTP 请求样本。
 
-## 下载
+## 下载项目
 
 ```bash
 # 使用https协议
@@ -36,14 +36,20 @@ git clone git@github.com:moqi-y/FastApi-Seed.git
 ## 安装依赖
 
 **Python版本：** `3.10.11`
+> 推荐先创建**虚拟环境**，然后在虚拟环境中安装项目依赖和运行项目,避免污染全局环境。                                    
+> 创建虚拟环境： `python -m venv venv`       
+> 激活虚拟环境： `source venv/bin/activate` (Linux/MacOS) 或 `venv\Scripts\activate` (Windows)              
+> 退出虚拟环境： `deactivate` 
 
 ```bash
+# 安装所有依赖包（推荐）
 pip install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com -r requirements.txt
 ```
 
 ### 安装单个依赖包
 
 ```bash
+# 安装fastapi依赖包    
 pip install fastapi -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
 ```
 
@@ -87,10 +93,12 @@ JWT_SECRET_KEY="12345678"
 > - `.env`文件中的配置项会在项目启动时自动加载到环境变量中，无需手动设置。
 
 ## 启动项目
-
 ```bash
 uvicorn app.main:app --port 8080
 ```
+### OpenAPI 在线接口文档
+- http://localhost:8080/docs | http://127.0.0.1:8080/redoc  
+- http://localhost:8080/redoc | http://127.0.0.1:8080/redoc
 
 ## 部署项目
 
