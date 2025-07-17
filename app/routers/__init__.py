@@ -1,4 +1,4 @@
-from app.routers import auth, user
+from app.routers import auth, user, files
 
 
 def router_config(app):
@@ -16,4 +16,10 @@ def router_config(app):
         prefix="/api/v1/user",  # 路径名
         tags=["user"]  # 文档标签名
         # dependencies=[Depends(get_current_user)] #依赖
+    )
+
+    app.include_router(
+        files.router,
+        prefix="/api/v1/files",  # 路径名
+        tags=["files"]  # 文档标签名
     )
