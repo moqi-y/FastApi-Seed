@@ -18,19 +18,16 @@ def send_email(
 ):
     """
     发送邮件的封装方法
-
-    参数:
-        sender_email (str): 发件人邮箱地址
-        sender_password (str): 发件人邮箱密码（注意：某些邮箱需要使用授权码）
-        recipient_email (str): 收件人邮箱地址
-        subject (str): 邮件主题
-        body (str): 邮件正文内容
-        smtp_server (str, optional): SMTP服务器地址，默认为 "smtp.example.com"
-        smtp_port (int, optional): SMTP服务器端口号，默认为 587
-        attachment_path (str, optional): 附件路径，如果不需要附件，可以设置为 None
-        use_tls (bool, optional): 是否使用TLS加密，默认为 True
-
-    返回:
+    :param sender_email: 发件人邮箱地址
+    :param sender_password: 发件人邮箱密码（注意：某些邮箱需要使用授权码）
+    :param recipient_email : 收件人邮箱地址(str)
+    :param subject: 邮件主题(str)
+    :param body: 邮件正文内容(str)
+    :param smtp_server: SMTP服务器地址(str, optional)，默认为 "smtp.example.com"
+    :param smtp_port: SMTP服务器端口号 (int, optional)，默认为 587
+    :param attachment_path: 附件路径 (str, optional)，如果不需要附件，可以设置为 None
+    :param use_tls: 是否使用TLS加密 (bool, optional)，默认为 True
+    :return: dict: 包含发送结果的字典，格式为：
         dict: 包含发送结果的字典，格式为：
               {
                   "code": 200 或 00,
