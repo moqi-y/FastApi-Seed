@@ -1,4 +1,11 @@
 # utils/http_client.py
+"""
+httpx 客户端封装
+ - 支持异步
+ - 支持请求重试
+ - 支持自定义 headers
+ - 支持自定义请求参数
+"""
 from __future__ import annotations
 import httpx
 from typing import Any, Dict, Optional, Union
