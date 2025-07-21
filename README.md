@@ -85,13 +85,15 @@ MYSQL_DB="FastApi-Seed"
 
 # jwt加密密钥
 JWT_SECRET_KEY="12345678"
+# jwt过期时间，单位：分钟。
+JWT_EXPIRE_MINUTES=120
 ```
 > 注意事项：       
 > - 生产环境部署时需要将`SQL_TYPE`设置为`mysql`，并配置正确的数据库连接信息。         
 > - 数据库密码中不要包含`@`字符，否则可能会导致数据库连接失败。
 > - `JWT_SECRET_KEY`用于加密jwt，请确保其安全性，不要泄露。
+> - `JWT_EXPIRE_MINUTES`用于设置jwt的过期时间，单位为分钟。未设置时默认缺省时间为30分钟    
 > - `.env`文件中的配置项会在项目启动时自动加载到环境变量中，无需手动设置。
-
 ## 启动项目
 ```bash
 uvicorn app.main:app --port 8080

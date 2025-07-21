@@ -9,7 +9,7 @@ load_dotenv()
 if os.getenv("SQL_TYPE") and os.getenv("SQL_TYPE") == "mysql":  # 如果SQL_TYPE为mysql，则连接mysql数据库
     # MySql
     DATABASE_URL = f"mysql+pymysql://{os.getenv('MYSQL_USER')}:{os.getenv('MYSQL_PASSWORD')}@{os.getenv('MYSQL_HOST')}:{os.getenv('MYSQL_PORT')}/{os.getenv('MYSQL_DB')}"
-    engine = create_engine(DATABASE_URL, echo=False)
+    engine = create_engine(DATABASE_URL, pool_recycle=3600, pool_pre_ping=True, echo=False)
 # 如果SQL_TYPE为sqlite，则连接sqlite数据库
 elif os.getenv("SQL_TYPE") and os.getenv("SQL_TYPE") == "sqlite":
     # sqlite

@@ -1,3 +1,4 @@
+import os
 from datetime import timedelta
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
@@ -32,8 +33,8 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
 
 
 def create_token_response(username: str):
-    # 设置access_token的过期时间为120分钟
-    access_token_expires = timedelta(minutes=120)
+    # 设置access_token的过期时间,从环境变量中获取
+    access_token_expires = timedelta(minutes=float(os.getenv("JWT_EXPIRE_MINUTES")))
     # 创建access_token，并设置过期时间为access_token_expires
     access_token = create_access_token(
         data={"sub": username}, expires_delta=access_token_expires

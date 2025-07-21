@@ -7,7 +7,7 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 # 设置JWT的算法
 ALGORITHM = "HS256"
-# 设置访问令牌的过期时间为30分钟
+# 设置访问令牌的默认缺省过期时间为30分钟
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 
