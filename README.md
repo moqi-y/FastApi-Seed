@@ -83,6 +83,9 @@ MYSQL_USER="root"
 MYSQL_PASSWORD="123456"
 MYSQL_DB="FastApi-Seed"
 
+# sqlite数据库文件
+SQLITE_FILE="FastApi-Seed.db"
+
 # jwt加密密钥
 JWT_SECRET_KEY="12345678"
 # jwt过期时间，单位：分钟。
