@@ -7,7 +7,7 @@ from pydantic import BaseModel
 class SuccessResponse(BaseModel):
     code: int = 200  # 定义响应码为200
     message: str = "操作成功"  # 定义响应消息
-    data: dict | BaseModel  # 定义响应数据为任意类型
+    data: Any  # 定义响应数据为任意类型
 
 
 # 定义一个失败响应的类
