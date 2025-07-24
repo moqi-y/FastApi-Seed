@@ -13,7 +13,7 @@ if os.getenv("SQL_TYPE") and os.getenv("SQL_TYPE") == "mysql":  # 如果SQL_TYPE
 # 如果SQL_TYPE为sqlite，则连接sqlite数据库
 elif os.getenv("SQL_TYPE") and os.getenv("SQL_TYPE") == "sqlite":
     # sqlite
-    engine = create_engine("sqlite:///FastApi-Seed.db", echo=False)
+    engine = create_engine(f"sqlite:///{os.getenv('SQLITE_FILE')}", echo=False)
 else:
     raise Exception("SQL_TYPE in '.env' must be mysql or sqlite")
 
