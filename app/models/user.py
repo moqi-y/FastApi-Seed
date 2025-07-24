@@ -4,6 +4,7 @@ from sqlmodel import Field, SQLModel
 
 # 用户类，继承自SQLModel，并指定为数据库表
 class User(SQLModel, table=True):
+    __tablename__ = "user"
     # 用户ID，默认为None，为主键,自动生成,此处存在官方库bug,不要使用alias参数，不生效。
     user_id: int | None = Field(default=None, primary_key=True)
     # 用户名，设置索引
