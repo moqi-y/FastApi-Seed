@@ -190,6 +190,7 @@ uvicorn~=0.35.0
 pydantic~=2.11.7
 sqlmodel~=0.0.24
 passlib~=1.7.4
+bcrypt~=4.3.0
 python-multipart~=0.0.20
 python-dotenv~=1.1.1
 python-jose[cryptography]~=3.5.0
