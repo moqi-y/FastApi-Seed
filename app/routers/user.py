@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from app.crud.user import get_user_by_username, update_user_info
+from app.crud.user import get_user_by_username, update_user_infom, get_user_by_id
 from app.schemas.user import UserOut, UserIn
 
 router = APIRouter()
@@ -16,7 +16,7 @@ async def get_user(username: str):
 
 # 通过用户id查询用户信息
 @router.get("/userinfo/{user_id}", response_model=UserOut, summary="通过用户id查询用户信息")
-async def get_user_by_id(user_id: int):
+async def root(user_id: int):
     user = get_user_by_id(user_id)
     if not user:
         raise HTTPException(status_code=404, detail="用户不存在")
