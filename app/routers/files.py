@@ -1,4 +1,4 @@
-from fastapi import APIRouter, UploadFile, File
+from fastapi import APIRouter, UploadFile, File, HTTPException
 
 from app.external_services.file_uploader.service import LocalFileUploader
 
@@ -24,7 +24,4 @@ async def upload_file_local(file: UploadFile = File(...)):
             }
         }
     except Exception as e:
-        return {
-            "code": 500,
-            "message": str(e)
-        }
+        raise HTTPException(status_code=500, detail=str(e))
