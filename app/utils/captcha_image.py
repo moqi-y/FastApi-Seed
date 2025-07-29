@@ -17,7 +17,10 @@ def generate_captcha_image(img_format="PNG"):
     buf = BytesIO()
     img.save(buf, format=img_format)
     b64 = base64.b64encode(buf.getvalue()).decode()
-    return f'data:image/{img_format.lower()};base64,{b64}'
+    return {
+        "image": f"data:image/{img_format.lower()};base64,{b64}",
+        "code": chars.lower()
+    }
 
 
 
