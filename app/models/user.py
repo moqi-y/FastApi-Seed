@@ -1,5 +1,6 @@
 from datetime import datetime
 from sqlmodel import Field, SQLModel
+from sqladmin import ModelView
 
 
 # 用户类，继承自SQLModel，并指定为数据库表
@@ -15,3 +16,7 @@ class User(SQLModel, table=True):
     email: str | None = None
     # 创建时间，默认为当前时间25, email='jane.doe@example.com', active=False)
     created_at: datetime = Field(default=datetime.now())
+
+
+class UserAdmin(ModelView, model=User):
+    column_list = [User.user_id, User.username]

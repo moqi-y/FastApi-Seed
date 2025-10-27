@@ -4,10 +4,13 @@ from fastapi import FastAPI, applications
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
-from app.crud.database import create_db_and_tables
+from app.crud.database import create_db_and_tables, engine
+from app.crud.user import authenticate_user
 from app.middleware import cors
 from app.middleware.logger_config import make_logging_middleware
+from app.models.user import UserAdmin
 from app.routers import router_config
+from sqladmin import Admin, ModelView
 
 # 加载 .env 文件
 load_dotenv()
@@ -31,6 +34,14 @@ app = FastAPI(
     docs_url="/docs" if debug else None,  # docs_url=None, redoc_url=None
     redoc_url="/redoc" if debug else None,
 )
+
+admin = Admin(
+    app,
+    engine,
+    title="管理后台",  # 管理界面标题
+    logo_url="",  # 管理界面logo
+)
+admin.add_view(UserAdmin)
 
 
 @app.on_event("startup")
