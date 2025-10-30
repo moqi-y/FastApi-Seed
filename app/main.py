@@ -8,6 +8,7 @@ from app.crud.database import create_db_and_tables, engine
 from app.crud.user import authenticate_user
 from app.middleware import cors
 from app.middleware.logger_config import make_logging_middleware
+from app.models.roles import RolesAdmin
 from app.models.user import UserAdmin
 from app.routers import router_config
 from sqladmin import Admin, ModelView
@@ -39,9 +40,12 @@ admin = Admin(
     app,
     engine,
     title="管理后台",  # 管理界面标题
-    logo_url="",  # 管理界面logo
+    # logo_url="",  # 管理界面logo
 )
+
+# 注册模型视图,用于管理后台
 admin.add_view(UserAdmin)
+admin.add_view(RolesAdmin)
 
 
 @app.on_event("startup")
