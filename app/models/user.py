@@ -20,3 +20,4 @@ class User(SQLModel, table=True):
 
 class UserAdmin(ModelView, model=User):
     column_list = [User.user_id, User.username]
+    column_searchable_list = [User.username]

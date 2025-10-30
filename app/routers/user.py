@@ -7,7 +7,7 @@ router = APIRouter()
 
 
 # 通过用户名查询用户信息
-@router.get("/userinfo/{username}", response_model=UserOut, summary="通过用户名查询用户信息")
+@router.get("/userinfo/{username}", summary="通过用户名查询用户信息")
 async def get_user(username: str):
     user = get_user_by_username(username)
     if not user:
@@ -20,7 +20,7 @@ async def get_user(username: str):
 
 
 # 通过用户id查询用户信息
-@router.get("/userinfo/{user_id}", response_model=UserOut, summary="通过用户id查询用户信息")
+@router.get("/userinfo/{user_id}", summary="通过用户id查询用户信息")
 async def root(user_id: int):
     user = get_user_by_id(user_id)
     if not user:
