@@ -217,3 +217,4 @@ pymysql~=1.1.1
 ### 参考文档
 - [FastAPI 官方文档](https://fastapi.tiangolo.com/zh/)
 - [SQLModel 官方文档](https://sqlmodel.fastapi.org.cn/)
+- [Font Awesome图标库](https://fontawesome.com/search)

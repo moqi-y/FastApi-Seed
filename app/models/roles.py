@@ -13,8 +13,4 @@ class Role(SQLModel, table=True):
     created_at: datetime = Field(default=datetime.now())
 
 
-class RolesAdmin(ModelView, model=Role):
-    name_plural = "角色管理"
-    category = "系统管理"
-    icon = "fa fa-user-shield"
-    column_list = [Role.role_id, Role.role_name, Role.role_desc,Role.created_at]
+
