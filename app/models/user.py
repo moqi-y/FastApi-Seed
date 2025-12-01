@@ -1,6 +1,5 @@
 import uuid
 from datetime import datetime
-
 from sqlmodel import Field, SQLModel
 
 
@@ -16,8 +15,8 @@ class User(SQLModel, table=True):
     # 邮箱，设置索引
     email: str | None = None
     # 是否激活，设置索引
-    is_active: bool | None = Field(default=False)
-    # 角色,关联role表的role_id
+    is_active: bool = Field(default=False)
+    # 角色,下拉选择role表中的id
     role_id: int = Field(default=0)
     # 创建时间，默认为当前时间25, email='jane.doe@example.com', active=False)
     created_at: datetime = Field(default=datetime.now().replace(microsecond=0))
