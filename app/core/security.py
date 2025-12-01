@@ -1,7 +1,11 @@
+from dotenv import load_dotenv
 from passlib.context import CryptContext
 from jose import jwt
 from datetime import datetime, timedelta
 import os
+
+# 加载 .env 文件
+load_dotenv()
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 SECRET_KEY = os.getenv("JWT_SECRET_KEY")
