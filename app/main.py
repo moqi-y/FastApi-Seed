@@ -19,8 +19,8 @@ load_dotenv()
 def swagger_monkey_patch(*args, **kwargs):
     return get_swagger_ui_html(
         *args, **kwargs,
-        swagger_js_url="https://cdn.bootcdn.net/ajax/libs/swagger-ui/5.20.0/swagger-ui-bundle.min.js",
-        swagger_css_url="https://cdn.bootcdn.net/ajax/libs/swagger-ui/5.20.0/swagger-ui.min.css"
+        swagger_js_url="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.20.0/swagger-ui-bundle.min.js",
+        swagger_css_url="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.20.0/swagger-ui.min.css"
     )
 
 

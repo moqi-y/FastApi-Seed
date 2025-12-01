@@ -22,13 +22,11 @@ class AdminAuth(AuthenticationBackend):
         username, password = form["username"], form["password"]  # 提取用户名和密码
         user_info = authenticate_user(username, password)  # 调用认证函数验证用户
         if user_info is not None:  # 如果认证成功
-            print("验证成功")
             # 将用户token信息存储到session中
             res = create_token_response(username)
             print("res:", res)
-            # access_token = create_token_response(username)["access_token"]
-            # request.session.update({"token": access_token})
-            request.session.update({"token": "123456"})
+            access_token = create_token_response(username)["access_token"]
+            request.session.update({"token": access_token})
             return True  # 返回认证成功
         return False  # 返回认证失败
 
@@ -39,14 +37,9 @@ class AdminAuth(AuthenticationBackend):
 
     async def authenticate(self, request) -> bool:
         token = request.session.get("token")
-        print("token:", token)
         if not token:
             return False
-        # return await get_current_user(token)
-        return True
-        # Check the token in depth
-
-        # return True
+        return await get_current_user(token)
 
 
 authentication_backend = AdminAuth(secret_key=SECRET_KEY)
