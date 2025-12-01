@@ -19,7 +19,6 @@ def register(user: UserCreate):
     if get_user_by_username(user.username):
         raise HTTPException(status_code=400, detail="用户名已存在")
     user_obj = create_user(user.username, hash_password(user.password), user.email)
-    print("user_obj:", user_obj)
     if user_obj is None:
         raise HTTPException(status_code=500, detail="用户创建失败")
     return SuccessResponse(data={

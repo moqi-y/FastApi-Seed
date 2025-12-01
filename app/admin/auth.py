@@ -24,7 +24,6 @@ class AdminAuth(AuthenticationBackend):
         if user_info is not None:  # 如果认证成功
             # 将用户token信息存储到session中
             res = create_token_response(username)
-            print("res:", res)
             access_token = create_token_response(username)["access_token"]
             request.session.update({"token": access_token})
             return True  # 返回认证成功

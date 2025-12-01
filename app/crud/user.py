@@ -38,7 +38,7 @@ def get_user_by_username(username: str):
 
 
 # 根据用户ID查询用户
-def get_user_by_id(user_id: int):
+def get_user_by_id(user_id: str):
     try:
         # 查询用户，如果不存在则返回 None
         user = session.exec(
@@ -68,7 +68,7 @@ def authenticate_user(username: str, password: str):
 
 
 # 更新用户信息
-def update_user_info(user_id: int, username: str, password: str, email: str):
+def update_user_info(user_id: str, username: str, password: str, email: str):
     try:
         # 更新用户信息
         result = session.exec(select(User).where(User.id == user_id)).one()

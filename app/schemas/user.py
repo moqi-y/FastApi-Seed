@@ -15,7 +15,7 @@ class UserCreate(BaseModel):
 
 
 class UserOut(BaseModel):
-    user_id: int | None
+    user_id: str | None
     username: str
     email: str | None
     created_at: datetime | None
@@ -26,7 +26,7 @@ class UserOut(BaseModel):
 
 
 class UserIn(BaseModel):
-    user_id: int | None
+    user_id: str | None
     username: str
     password: str
     email: str | None

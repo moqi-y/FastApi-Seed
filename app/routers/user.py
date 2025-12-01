@@ -21,7 +21,7 @@ async def get_user(username: str):
 
 # 通过用户id查询用户信息
 @router.get("/userinfo/{user_id}", summary="通过用户id查询用户信息")
-async def root(user_id: int):
+async def root(user_id: str):
     user = get_user_by_id(user_id)
     if not user:
         raise HTTPException(status_code=404, detail="用户不存在")
@@ -34,7 +34,7 @@ async def root(user_id: int):
 
 # 更新用户信息
 @router.put("/userinfo/{user_id}", response_model=UserOut, summary="更新用户全部信息")
-async def update_user(user_id: int, user: UserIn):
+async def update_user(user_id: str, user: UserIn):
     user = update_user_info(user_id, user.username, user.password, user.email)
     if not user:
         raise HTTPException(status_code=404, detail="用户不存在")
