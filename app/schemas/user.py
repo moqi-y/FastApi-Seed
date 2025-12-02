@@ -11,14 +11,14 @@ class Token(BaseModel):
 class UserCreate(BaseModel):
     username: str
     password: str
-    email: str | None
+    email: str | None = None
 
 
 class UserOut(BaseModel):
-    user_id: int | None
+    user_id: str | None = None
     username: str
-    email: str | None
-    created_at: datetime | None
+    email: str | None = None
+    created_at: datetime | None = None
 
     class Config:
         # 是否从属性中获取配置
@@ -26,7 +26,13 @@ class UserOut(BaseModel):
 
 
 class UserIn(BaseModel):
-    user_id: int | None
+    user_id: str | None = None
     username: str
-    password: str
-    email: str | None
+    password: str | None = None
+    email: str | None = None
+
+
+class ResponseModel(BaseModel):
+    code: int
+    message: str
+    data: UserOut

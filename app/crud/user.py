@@ -1,5 +1,5 @@
 from sqlmodel import select, Session
-from app.core.security import verify_password
+from app.core.security import verify_password, hash_password
 from app.crud.database import engine
 from app.models.user import User
 
@@ -38,11 +38,11 @@ def get_user_by_username(username: str):
 
 
 # 根据用户ID查询用户
-def get_user_by_id(user_id: int):
+def get_user_by_id(user_id: str):
     try:
         # 查询用户，如果不存在则返回 None
         user = session.exec(
-            select(User).where(User.id == user_id)
+            select(User).where(User.user_id == user_id)
         ).first()
         return user
     except Exception as e:
@@ -68,17 +68,18 @@ def authenticate_user(username: str, password: str):
 
 
 # 更新用户信息
-def update_user_info(user_id: int, username: str, password: str, email: str):
+def update_user_info(user_id: str, username: str, password: str, email: str):
     try:
         # 更新用户信息
-        result = session.exec(select(User).where(User.id == user_id)).one()
+        result = session.exec(select(User).where(User.user_id == user_id)).one()
         result.username = username
-        result.password = password
+        if password:
+            result.password = hash_password(password)
         result.email = email
         session.add(result)
         session.commit()
         session.refresh(result)
-        return True
+        return result
     except Exception as e:
         print(f"SQL_Error: {e}")
         return False
