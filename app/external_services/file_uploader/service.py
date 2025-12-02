@@ -69,4 +69,4 @@ class LocalFileUploader:
             buffer.write(file.file.read())
         await file.close()
         # 4.返回结果
-        return f"/static/{file_path.relative_to(self.path).as_posix()}"
+        return f"/{self.path}/{file_path.relative_to(self.path).as_posix()}"

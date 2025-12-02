@@ -50,5 +50,7 @@ router_config(app)
 # 注册日志中间件
 app.middleware("http")(make_logging_middleware())
 
-#  静态文件配置
+#  静态文件配置。检查static是否存在，不存在则先创建
+if not os.path.exists("static"):
+    os.mkdir("static")
 app.mount("/static", StaticFiles(directory="static"), name="static")
